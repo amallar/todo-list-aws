@@ -1,3 +1,4 @@
+#Template que difine los recursos AWS de la aplicación 
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
@@ -10,37 +11,51 @@ Parameters:
   Stage:
     Type: String
     Default: default
+    #Aquí tenemos los entornos
     AllowedValues:
       - default
+      #Sirve para despliegues manuales del proyecto
       - staging
       - production
     Description: Enter staging or production. Default is default  
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
+#Definiciones globales comunes a distintos servicios
   Function:
+  # La función debe devolver algo antes del timeout de 3 segundos
     Timeout: 3
     Environment:
       Variables:
+        #Hace referencia a la tabla de DynamoDB a otra variable, porque cada entorno tiene su propia tabla.
         DYNAMODB_TABLE: !Ref TodosDynamoDbTable
+        # SAM Local, pruebas unitarias
         ENDPOINT_OVERRIDE: ""
     
 Resources:
-  
+#Recursos a crear en AWS.  
+  #Aquí se defninen las funciones
   CreateTodoFunction:
+    #Te crea Amazon API Gatewy y AWS lambda
     Type: AWS::Serverless::Function 
     Properties:
+      #Código funete de la función lambda
       CodeUri: src/
+      #Role que ejecuto la función
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: create.create
       Runtime: python3.7
       Events:
+      #Evento Api gateway
         Create:
+         #Indicas que el evento es de tipo API
           Type: Api
           Properties:
+          #Path de la Landa a partir del origen del proyecto que es SRC.
             Path: /todos
             Method: post
   ListTodosFunction:
+  #Lista todos los ítems
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: src/
@@ -54,6 +69,7 @@ Resources:
             Path: /todos
             Method: get
   GetTodoFunction:
+  #Lista un ítem
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: src/
@@ -67,6 +83,7 @@ Resources:
             Path: /todos/{id}
             Method: get
   UpdateTodoFunction:
+  #Actualiza un ítem
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: src/
@@ -80,6 +97,7 @@ Resources:
             Path: /todos/{id}
             Method: put
   DeleteTodoFunction:
+  #Borra un ítem
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: src/
@@ -94,8 +112,12 @@ Resources:
             Method: delete
             
   TodosDynamoDbTable:
+  #Creación de la tabla en dyanamo DB
     Type: AWS::DynamoDB::Table
     Properties: 
+      #La tabla del dynamo db es en función del entorno, del stage dfinido arriba
+      #Crea una tabla de Amazon dynamo db con 1 unidad de lectura y escritura
+      
       TableName: !Sub "${Stage}-TodosDynamoDbTable"
       AttributeDefinitions: 
         - AttributeName: id
@@ -109,6 +131,7 @@ Resources:
 
 
 Outputs:
+  ##Valores que se devuelven cada vez que se ven las propiedades del stack
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api

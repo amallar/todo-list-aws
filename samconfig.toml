@@ -1,12 +1,19 @@
+#Configuración de los entornos staging y producción
+# Las stage variables actuan como variables de entorno, se usan para almacenar valores de configuración
+#Hemos definido los entornos, le definios al API GATEWAY las referencias del entorno.
+#Cuano escojamos el entnorno, en función de este aplicara una configuracón u otra como un mapeo.
+#Diferentes variables en diferentes Stages, accesibles desde los diferentes campos de la API GATEWAY.
 version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
+#En el S3 es donde se subirá los artifactos 
 stack_name = "todo-list-aws"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-XXXXX" #Incluir bucket propio
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
+#Entorno donde se tiene que mapear 
 parameter_overrides = "Stage=\"default\""
 image_repositories = []
 
