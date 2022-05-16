@@ -1,5 +1,5 @@
 {
-#Permite el despliegue en local de la aplicación sobreescribiendo el endpoint de dynamodb para que apunte contra el docker de dynamo
+
 
   "CreateTodoFunction": {
     "ENDPOINT_OVERRIDE": "http://dynamodb:8000",
