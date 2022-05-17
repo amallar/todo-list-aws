@@ -9,19 +9,20 @@ version = 0.1
 [default.deploy.parameters]
 #En el S3 es donde se subirá los artifactos 
 stack_name = "todo-list-aws"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-XXXXX" #Incluir bucket propio
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-40zsm1tfe93e" #Incluir bucket propio
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
 #Entorno donde se tiene que mapear 
 parameter_overrides = "Stage=\"default\""
 image_repositories = []
+confirm_changeset = true
 
 [staging]
 [staging.deploy]
 [staging.deploy.parameters]
 stack_name = "todo-list-aws-staging"
-s3_bucket = "aws-sam-cli-managed-staging-samclisourcebucket-XXXXX" #Incluir bucket propio
+s3_bucket = "aws-sam-cli-managed-staging-samclisourcebucket-12345" #Incluir bucket propio
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
@@ -32,7 +33,7 @@ image_repositories = []
 [production.deploy]
 [production.deploy.parameters]
 stack_name = "todo-list-aws-production"
-s3_bucket = "aws-sam-cli-managed-production-samclisourcebucket-XXXXX" #Incluir bucket propio
+s3_bucket = "aws-sam-cli-managed-production-samclisourcebucket-12345" #Incluir bucket propio
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
