@@ -11,4 +11,6 @@ coverage run --include=src/todoList.py test/unit/TestToDo.py
 #Modificacion alex
 #coverage report 
 coverage report -m
+#añado el coverage html
+coverage html
 coverage xml
