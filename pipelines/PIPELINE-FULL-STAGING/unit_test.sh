@@ -12,6 +12,5 @@ coverage run --include=src/todoList.py test/unit/TestToDo.py
 #coverage report 
 coverage report -m
 #añado el coverage html
-sh 'echo  PYTHONPATH=$WORKSPACE'
 coverage html
 coverage xml
