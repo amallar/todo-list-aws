@@ -10,5 +10,5 @@ pip show coverage
 coverage run --include=src/todoList.py test/unit/TestToDo.py
 #Modificacion alex
 #coverage report 
-#coverage report -m
+coverage report -m
 coverage xml
