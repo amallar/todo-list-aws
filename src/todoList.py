@@ -38,11 +38,11 @@ def get_item(key, dynamodb=None):
             return result['Item']
 
 
-#def get_items(dynamodb=None):
- #   table = get_table(dynamodb)
+def get_items(dynamodb=None):
+    table = get_table(dynamodb)
     # fetch todo from the database
-  #  result = table.scan()
-   # return result['Items']
+   result = table.scan()
+    return result['Items']
 
 
 def put_item(text, dynamodb=None):
