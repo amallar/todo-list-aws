@@ -53,6 +53,8 @@ class TestDatabaseFunctions(unittest.TestCase):
 
         print('Table name:' + self.table.name)
         tableName = os.environ['DYNAMODB_TABLE'];
+        #Prueba Alex
+        tableName = 'prueba';
         # check if the table name is 'ToDo'
         self.assertIn(tableName, self.table.name)
         #self.assertIn('todoTable', self.table_local.name)
