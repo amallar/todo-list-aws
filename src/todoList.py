@@ -8,6 +8,7 @@ from botocore.exceptions import ClientError
 
 
 def get_table(dynamodb=None):
+    try:
     if not dynamodb:
         URL = os.environ['ENDPOINT_OVERRIDE']
         if URL:
@@ -17,6 +18,7 @@ def get_table(dynamodb=None):
                                                endpoint_url=URL)
         dynamodb = boto3.resource("dynamodb")
     # fetch todo from the database
+    except Exception:
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     return table
 
