@@ -81,8 +81,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         from src.todoList import put_item
         # Table local
-        response = put_item(self.text, self.dynamodb)
-        print ('Response put_item:' + str(response))
         self.assertRaises(TypeError, put_item("", self.dynamodb))
         # Table mock
         #self.assertEqual(200, put_item(self.text, self.dynamodb)[
