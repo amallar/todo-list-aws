@@ -74,19 +74,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         #self.assertEqual(200, put_item(self.text, self.dynamodb)[
         #                 'ResponseMetadata']['HTTPStatusCode'])
         print ('End: test_put_todo')
-
-    def test_put_todo_error(self):
-        print ('---------------------')
-        print ('Start: test_put_todo_error')
-        # Testing file functions
-        from src.todoList import put_item
-        # Table local
-        self.assertRaises(TypeError, put_item("", self.dynamodb))
-        # Table mock
-        #self.assertEqual(200, put_item(self.text, self.dynamodb)[
-        #                 'ResponseMetadata']['HTTPStatusCode'])
-        print ('End: test_put_todo')
-        
+      
     def test_get_todo(self):
         print ('---------------------')
         print ('Start: test_get_todo')
@@ -132,7 +120,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
-
 
     def test_update_todo(self):
         print ('---------------------')
