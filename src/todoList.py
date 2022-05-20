@@ -43,7 +43,7 @@ def get_item_prueba(key, dynamodb=None):
     try:
         result = table.get_item(
             Key={
-                'id': key
+                'idd': key
             }
         )
 
