@@ -68,8 +68,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         response = put_item(self.text, self.dynamodb)
         print ('Response put_item:' + str(response))
         self.assertEqual(200, response['statusCode'])
-        table.put_item("")
- 
         #alex
         #self.assertEqual(800, put_item(self.text, self.dynamodb)
         # Table mock
