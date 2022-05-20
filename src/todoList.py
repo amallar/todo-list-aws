@@ -65,7 +65,7 @@ def put_item(text, dynamodb=None):
             "body": json.dumps(item)
         }
 
-    except Exception as e:
+    except ClientError as e:
         print(e.response['Error']['Message'])
     else:
         return response
