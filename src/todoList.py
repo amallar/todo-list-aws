@@ -29,9 +29,8 @@ def get_item(key, dynamodb=None):
                 'id': key
             }
         )
-
-    except ClientError as e:
-        print(e)
+    except Exception:
+        print("esto es un error")
     else:
         print('Result getItem:'+str(result))
         if 'Item' in result:
