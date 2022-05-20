@@ -83,7 +83,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Table local
         response = put_item(self.text, self.dynamodb)
         print ('Response put_item:' + str(response))
-        self.assertEqual(800, response['statusCode'])
+        self.assertRaises(TypeError, put_item("", self.dynamodb))
         # Table mock
         #self.assertEqual(200, put_item(self.text, self.dynamodb)[
         #                 'ResponseMetadata']['HTTPStatusCode'])
