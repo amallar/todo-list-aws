@@ -38,7 +38,7 @@ def get_item(key, dynamodb=None):
             return result['Item']
 
 
-def get_item(key, dynamodb=None):
+def get_item_prueba(key, dynamodb=None):
     table = get_table(dynamodb)
     try:
         result = table.get_item(
@@ -53,8 +53,6 @@ def get_item(key, dynamodb=None):
         print('Result getItem:'+str(result))
         if 'Item' in result:
             return result['Item']
-
-
 
 
 def get_items(dynamodb=None):
