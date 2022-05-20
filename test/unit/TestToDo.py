@@ -75,7 +75,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         #                 'ResponseMetadata']['HTTPStatusCode'])
         print ('End: test_put_todo')
 
-        def test_put_todo_error(self):
+    def test_put_todo_error(self):
         print ('---------------------')
         print ('Start: test_put_todo_error')
         # Testing file functions
