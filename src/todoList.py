@@ -22,11 +22,8 @@ def get_table(dynamodb=None):
 
 
 def get_item(key, dynamodb=None):
-    try:
+    
         table = get_table(dynamodb)
-        
-    except Exception as e:
-        print(e.response['Error']['Message']
 
     try:
         result = table.get_item(
