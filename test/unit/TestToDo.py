@@ -110,8 +110,12 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('---------------------')
         print ('Start: test_get_item_error')
         from src.todoList import get_item
+        from src.todoList import put_item
+        from src.todoList import update_item
         # Testing file functions
-        self.assertRaises(Exception, get_item("xxx", self.dynamodb))
+        self.assertRaises(Exception, get_item("", ""))
+        self.assertRaises(Exception, put_item("", ""))
+        elf.assertRaises(Exception, update_item("", "", "", ""))
         print ('End: test_get_item_error')
 
     def test_list_todo(self):
