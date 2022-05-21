@@ -202,14 +202,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
 
-    def test_delete_todo_error_2(self):
-        print ('---------------------')
-        print ('Start: test_delete_todo_error')
-        from src.todoList import put_item
-        from src.todoList import create_todo_table
-        self.test_user_repo.table = table = Mock()
-        table.put_item.side_effect = Exception('Boto3 Exception')
-        
 
 if __name__ == '__main__':
     unittest.main()
