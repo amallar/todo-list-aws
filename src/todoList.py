@@ -24,21 +24,18 @@ def get_table(dynamodb=None):
 def get_item(key, dynamodb=None):
     table = get_table(dynamodb)
     try:
-        if result = table.get_item(
+        result = table.get_item(
             Key={
                 'id': key
             }
-        ):
-        else:
-            raise ClientError("error")
-
+        )
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
         print('Result getItem:'+str(result))
         if 'Item' in result:
             return result['Item']
-
+    
 
 def get_items(dynamodb=None):
     table = get_table(dynamodb)
