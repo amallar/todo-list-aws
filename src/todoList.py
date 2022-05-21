@@ -28,7 +28,9 @@ def get_item(key, dynamodb=None):
             Key={
                 'id': key
             }
-        )
+        ):
+        else:
+            raise ClientError("error")
 
     except ClientError as e:
         print(e.response['Error']['Message'])
