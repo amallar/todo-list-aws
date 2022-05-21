@@ -57,7 +57,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertIn(tableName, self.table.name)
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
-        
+
 
     def test_put_todo(self):
         print ('---------------------')
@@ -68,13 +68,23 @@ class TestDatabaseFunctions(unittest.TestCase):
         response = put_item(self.text, self.dynamodb)
         print ('Response put_item:' + str(response))
         self.assertEqual(200, response['statusCode'])
-        #alex
-        #self.assertEqual(800, put_item(self.text, self.dynamodb)
         # Table mock
         #self.assertEqual(200, put_item(self.text, self.dynamodb)[
         #                 'ResponseMetadata']['HTTPStatusCode'])
         print ('End: test_put_todo')
-      
+
+
+    def test_put_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_put_todo_error')
+        # Testing file functions
+        from src.todoList import put_item
+        # Table mock
+        self.assertRaises(Exception, put_item("", self.dynamodb))
+        self.assertRaises(Exception, put_item("", self.dynamodb))
+        print ('End: test_put_todo_error')
+
+
     def test_get_todo(self):
         print ('---------------------')
         print ('Start: test_get_todo')
@@ -96,16 +106,8 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
-    
-    def test_get_todo_error(self):
-        print ('---------------------')
-        print ('Start: test_get_todo_error')
-        from src.todoList import get_item
-        from src.todoList import put_item
-        self.assertRaises(Exception, get_item("", self.dynamodb))
-        self.assertRaises(Exception, get_item("", self.dynamodb))
-        print ('Start: test_get_todo_error')
-    
+
+
     def test_list_todo(self):
         print ('---------------------')
         print ('Start: test_list_todo')
@@ -120,6 +122,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
+
 
     def test_update_todo(self):
         print ('---------------------')
