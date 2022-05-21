@@ -22,6 +22,7 @@ def get_table(dynamodb=None):
 
 
 def get_item(key, dynamodb=None):
+    print("comienza get_item)
     table = get_table(dynamodb)
     try:
         result = table.get_item(
@@ -31,8 +32,10 @@ def get_item(key, dynamodb=None):
         )
     except ClientError as e:
         print(e.response['Error']['Message'])
+        print ("esta ejecutando get item client error")
     else:
         print('Result getItem:'+str(result))
+        print ("esta ejecutando get item else)
         if 'Item' in result:
             return result['Item']
 
