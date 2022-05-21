@@ -111,7 +111,12 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_get_todo')
         from src.todoList import get_item
         from src.todoList import put_item
-        self.assertRaises(Exception, get_item("", self.dynamodb))
+        idItem='Alex'
+        self.assertEqual(400, responsePut['statusCode'])
+        responseGet = get_item(
+                idItem,
+                self.dynamodb)
+        print ('Response Get:' + str(responseGet))
 
 
     def test_list_todo(self):
