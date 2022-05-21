@@ -201,20 +201,13 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
 
-    def test_some_thing_failure(self):
+    def test_delete_todo_error_2(self):
         print ('---------------------')
-        print ('Start: setUp')
-        """Create the mock database and table"""
-        self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')   
-        from src.todoList import create_todo_table
-        self.table = create_todo_table(self.dynamodb)
-        self.test_user_repo = UserRepository(self.dynamodb)
+        print ('Start: test_delete_todo_error')
+        from src.todoList import delete_item
+        # Testing file functions
         self.test_user_repo.table = table = Mock()
-        table.put_item.side_effect = Exception('Boto3 Exception')        
-        
-        with self.assertRaises(Exception) as exc:
-            self.test_user_repo.create_user(username='John')
-            self.assertTrue('Boto3 Exception' in exc.exception)
+        table.put_item.side_effect = Exception('Boto3 Exception')
 
 
 if __name__ == '__main__':
