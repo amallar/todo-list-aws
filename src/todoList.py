@@ -114,7 +114,7 @@ def delete_item(key, dynamodb=None):
         print(e.response['Error']['Message'])
     else:
         return
-    
+
 
 def create_todo_table(dynamodb):
     # For unit testing
