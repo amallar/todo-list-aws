@@ -104,11 +104,13 @@ def delete_item(key, dynamodb=None):
     table = get_table(dynamodb)
     # delete the todo from the database
     try:
-        table.delete_item(
-            Key={
-                'id': key
-            }
-        )
+        if table.delete_item(
+                Key={
+                    'id': key
+                }
+            )
+        else 
+            raise ClientError("El valor no es un numero")
 
     except ClientError as e:
         print(e.response['Error']['Message'])
