@@ -110,10 +110,15 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('---------------------')
         print ('Start: test_get_item_error')
         from src.todoList import get_item
-        response = get_item(self, self.dynamodb)
-        print ('Response put_item:' + str(response))
         # Testing file functions
-        #self.assertRaises(TypeError, get_item("", self.dynamodb))
+        self.assertEqual(800, responsePut['statusCode'])
+        responseGet = get_item(
+                idItem,
+                self.dynamodb)
+        print ('Response Get:' + str(responseGet))
+        self.assertEqual(
+            self.text,
+            responseGet['text'])
         print ('End: test_get_item_error')
 
     def test_list_todo(self):
