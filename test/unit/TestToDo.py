@@ -57,7 +57,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertIn(tableName, self.table.name)
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
-
+        
 
     def test_put_todo(self):
         print ('---------------------')
@@ -73,7 +73,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         #                 'ResponseMetadata']['HTTPStatusCode'])
         print ('End: test_put_todo')
 
-
     def test_put_todo_error(self):
         print ('---------------------')
         print ('Start: test_put_todo_error')
@@ -83,7 +82,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(Exception, put_item("", self.dynamodb))
         self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
-
 
     def test_get_todo(self):
         print ('---------------------')
@@ -106,8 +104,7 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
-
-
+    
     def test_list_todo(self):
         print ('---------------------')
         print ('Start: test_list_todo')
@@ -202,6 +199,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
+
+
 
 if __name__ == '__main__':
     unittest.main()
