@@ -205,7 +205,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('---------------------')
         print ('Start: test_delete_todo_error')
         from src.todoList import put_item
+        from src.todoList import create_todo_table
         # Testing file functions
+        self.table = create_todo_table(self.dynamodb)
         table.put_item.side_effect = Exception('Boto3 Exception')
 
 
