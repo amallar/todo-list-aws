@@ -200,7 +200,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import delete_item
         # Testing file functions
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
-            raise Exception('A ver si peta {}'delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
 
 
