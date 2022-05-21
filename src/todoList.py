@@ -101,7 +101,7 @@ def update_item(key, text, checked, dynamodb=None):
 
 
 def delete_item(key, dynamodb=None):
-    print("comienza el delete")
+    print('comienza el delete')
     table = get_table(dynamodb)
     # delete the todo from the database
     try:
@@ -110,12 +110,12 @@ def delete_item(key, dynamodb=None):
                 'id': key
             }
         )
-    print("se ejecuta el try")
+    print('se ejecuta el try')
     except ClientError as e:
         print(e.response['Error']['Message'])
-        print("se ejecuto client error de delete todo")
+        print('se ejecuto client error de delete todo')
     else:
-        print("se ejecuta el else")
+        print('se ejecuta el else')
         return
     
 
