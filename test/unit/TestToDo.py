@@ -202,6 +202,26 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('End: test_delete_todo_error')
 
 
+class TestDatabaseFunctions_2(unittest.TestCase):
+    def setUp(self):
+        print ('---------------------')
+        print ('Start: setUp')
+        """Create the mock database and table"""
+        self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')   
+        from src.todoList import create_todo_table
+        self.table = create_todo_table(self.dynamodb)
+        self.test_user_repo = UserRepository(self.dynamodb)
+        #self.table_local = create_todo_table()
+        print ('End: setUp')
+
+    def test_some_thing_failure(self):
+        self.test_user_repo.table = table = Mock()
+        table.put_item.side_effect = Exception('Boto3 Exception')        
+        
+        with self.assertRaises(Exception) as exc:
+            self.test_user_repo.create_user(username='John')
+            self.assertTrue('Boto3 Exception' in exc.exception)
+
 
 if __name__ == '__main__':
     unittest.main()
