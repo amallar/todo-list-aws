@@ -6,7 +6,7 @@ from moto import mock_dynamodb2
 import sys
 import os
 import json
-import Mock
+from unittest.mock import Mock
 
 @mock_dynamodb2
 class TestDatabaseFunctions(unittest.TestCase):
