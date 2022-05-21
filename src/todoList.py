@@ -22,9 +22,7 @@ def get_table(dynamodb=None):
 
 
 def get_item(key, dynamodb=None):
-    
-        table = get_table(dynamodb)
-
+    table = get_table(dynamodb)
     try:
         result = table.get_item(
             Key={
