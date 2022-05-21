@@ -16,5 +16,5 @@ def create(event, context):
             "body": json.dumps(item)
         }
         return response
-    except:
+    except Exception:
         print("es un error")
