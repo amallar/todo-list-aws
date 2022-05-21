@@ -204,7 +204,7 @@ class TestDatabaseFunctions(unittest.TestCase):
     def test_delete_todo_error_2(self):
         print ('---------------------')
         print ('Start: test_delete_todo_error')
-        from src.todoList import delete_item
+        from src.todoList import put_item
         # Testing file functions
         table.put_item.side_effect = Exception('Boto3 Exception')
 
