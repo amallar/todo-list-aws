@@ -6,6 +6,7 @@ from moto import mock_dynamodb2
 import sys
 import os
 import json
+import Mock
 
 @mock_dynamodb2
 class TestDatabaseFunctions(unittest.TestCase):
@@ -206,10 +207,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_delete_todo_error')
         from src.todoList import put_item
         from src.todoList import create_todo_table
-        # Testing file functions
-        self.table = create_todo_table(self.dynamodb)
+        self.test_user_repo.table = table = Mock()
         table.put_item.side_effect = Exception('Boto3 Exception')
-
+        
 
 if __name__ == '__main__':
     unittest.main()
