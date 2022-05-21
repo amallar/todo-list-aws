@@ -206,7 +206,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_delete_todo_error')
         from src.todoList import delete_item
         # Testing file functions
-        self.test_user_repo.table = table = Mock()
         table.put_item.side_effect = Exception('Boto3 Exception')
 
 
