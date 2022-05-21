@@ -17,7 +17,7 @@ def get(event, context):
             "statusCode": 404,
             "body": ""
         }
-        #alex
+
         raise Exception("Couldn't create the todo item.")
-        #finalex
+
     return response
