@@ -18,6 +18,4 @@ def get(event, context):
             "body": ""
         }
 
-        raise Exception("Couldn't create the todo item.")
-
     return response
