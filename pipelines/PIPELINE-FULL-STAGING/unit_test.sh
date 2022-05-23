@@ -13,4 +13,5 @@ coverage run --include=src/todoList.py test/unit/TestToDo.py
 coverage report -m
 #añado el coverage html
 coverage html
-coverage xml
+cobertura coberturaReportFile: 'coverage.xml', conditionalCoverageTargets: '80, 0, 0', failUnhealthy: true, failUnstable: true, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
+#coverage xml
