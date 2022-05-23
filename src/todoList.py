@@ -55,7 +55,7 @@ def put_item(text, dynamodb=None):
         'createdAt': timestamp,
         'updatedAt': timestamp,
     }
-    try:
+    if text !=":
         # write the todo to the database
         table.put_item(Item=item)
         # create a response
@@ -64,9 +64,9 @@ def put_item(text, dynamodb=None):
             "body": json.dumps(item)
         }
 
-    except ClientError as e:
-        print(e.response['Error']['Message'])
     else:
+        print('Se produjo un error')
+        response='Se ha producido un error'
         return response
 
 
