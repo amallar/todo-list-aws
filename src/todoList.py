@@ -55,7 +55,7 @@ def put_item(text, dynamodb=None):
         'createdAt': timestamp,
         'updatedAt': timestamp,
     }
-    if text !=":
+    if text !="":
         # write the todo to the database
         table.put_item(Item=item)
         # create a response
