@@ -6,6 +6,7 @@ from moto import mock_dynamodb2
 import sys
 import os
 import json
+from unittest.mock import Mock
 
 @mock_dynamodb2
 class TestDatabaseFunctions(unittest.TestCase):
@@ -104,7 +105,8 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
-    
+
+
     def test_list_todo(self):
         print ('---------------------')
         print ('Start: test_list_todo')
@@ -199,7 +201,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
-
 
 
 if __name__ == '__main__':
