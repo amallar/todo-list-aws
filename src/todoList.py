@@ -63,11 +63,10 @@ def put_item(text, dynamodb=None):
             "statusCode": 200,
             "body": json.dumps(item)
         }
-
     else:
         print('Se produjo un error')
         response='Se ha producido un error'
-        return response
+    return response
 
 
 def update_item(key, text, checked, dynamodb=None):
