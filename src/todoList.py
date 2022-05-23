@@ -48,6 +48,7 @@ def put_item(text, dynamodb=None):
     table = get_table(dynamodb)
     timestamp = str(time.time())
     print('Table name:' + table.name)
+    print('Aca Imprime el texto:' + text)
     item = {
         'id': str(uuid.uuid1()),
         'text': text,
@@ -55,7 +56,7 @@ def put_item(text, dynamodb=None):
         'createdAt': timestamp,
         'updatedAt': timestamp,
     }
-    if text !="":
+    if text != '':
         # write the todo to the database
         table.put_item(Item=item)
         # create a response
@@ -65,7 +66,7 @@ def put_item(text, dynamodb=None):
         }
     else:
         print('Se produjo un error')
-        response='Se ha producido un error'
+        response = 'Se ha producido un error'
     return response
 
 
